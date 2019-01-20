@@ -12,6 +12,8 @@
     <!-- Styles -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
           integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+    <!-- Styles -->
     <style>
         html, body {
             background-color: #fff;
@@ -51,10 +53,11 @@
         }
 
         .links > a {
+            color: #636b6f;
             padding: 0 25px;
             font-size: 13px;
             font-weight: 600;
-
+            letter-spacing: .1rem;
             text-decoration: none;
             text-transform: uppercase;
         }
@@ -71,12 +74,29 @@
 <div class="flex-center position-ref full-height">
     <div class="content">
         <div class="title m-b-md">
-            Eurovision
+            Results
         </div>
+        @if(isset($message))
+            <div class="alert alert-success">
+                <strong>Success!</strong> {{ $message }}
+            </div>
+        @endif
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <p>{{ $error }}</p>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
 
         <div class="links">
-            <a href="{{ route('countries') }}" type="button" class="btn btn-primary">Countries</a>
-            <a href="{{ route('results') }}" type="button" class="btn btn-secondary">Results</a>
+            @foreach($countries as $country)
+                <div>
+                    {{ $country->name }}  {{ $country->sum }}
+                </div>
+            @endforeach
         </div>
     </div>
 </div>

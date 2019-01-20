@@ -14,3 +14,8 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('countries', 'CountryController@index')->name('countries');
+Route::get('voting/{country}', 'VoteController@index')->name('voting');
+Route::get('results', 'VoteController@results')->name('results');
+Route::post('voting/{country}', 'VoteController@store')->name('voting.post');

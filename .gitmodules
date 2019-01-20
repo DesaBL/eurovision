@@ -1,0 +1,3 @@
+[submodule "laradock_eurovision"]
+	path = laradock_eurovision
+	url = https://github.com/Laradock/laradock.git
